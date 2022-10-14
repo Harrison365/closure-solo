@@ -1,28 +1,70 @@
-function identity() {}
+function identity(arg) {
+  return arg;
+}
 
-function identityF() {}
+function identityF(num) {
+  return function () {
+    return num;
+  };
+}
 
-function add() {}
+function add(a, b) {
+  return a + b;
+}
 
-function subtract() {}
+function subtract(a, b) {
+  return a - b;
+}
 
-function multiply() {}
+function multiply(a, b) {
+  return a * b;
+}
 
-function increment() {}
+function increment(num) {
+  return add(num, 1);
+}
 
-function addF() {}
+function addF(num1) {
+  return function (num2) {
+    return add(num1, num2);
+  };
+}
 
-function curry() {}
+function curry(binary, num1) {
+  return function (num2) {
+    return binary(num1, num2);
+  };
+}
 
-function liftF() {}
+function liftF(binary) {
+  return function (num1) {
+    return function (num2) {
+      return binary(num1, num2);
+    };
+  };
+}
 
-function twice() {}
+function twice(binary) {
+  return function (num) {
+    return binary(num, num);
+  };
+}
 
-function composeU() {}
+function composeU(first, second) {
+  return function (arg) {
+    return second(first(arg));
+  };
+}
 
-function composeB() {}
+function composeB(func1, func2) {
+  return function (a, b, c) {
+    return func2(func1(a, b), c);
+  };
+}
 
-function limit() {}
+function limit() {
+  return function () {};
+}
 
 function from() {}
 
