@@ -1,3 +1,5 @@
+test test
+
 # Higher Order Fun
 
 ## Goals
@@ -271,14 +273,14 @@ add.invoke(5, 7); // undefined
 
 ```js
 function multiply5(a, b, c, d, e) {
-	return a * b * c * d * e;
+  return a * b * c * d * e;
 }
 curry(multiply5, 1, 2)(3, 4, 5); // 120
 curry(multiply5, 1, 2, 3)(4, 5); // 120
 ```
 
--   Wow, that was ugly. Research ES6 spread syntax. Can you make it a lot more elegant?
--   Write `composeU` such that it can take any number of unary functions
+- Wow, that was ugly. Research ES6 spread syntax. Can you make it a lot more elegant?
+- Write `composeU` such that it can take any number of unary functions
 
 ## A much more difficult task
 
