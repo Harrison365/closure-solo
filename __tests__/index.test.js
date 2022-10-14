@@ -167,7 +167,7 @@ describe("Higher Order Functions", () => {
         expect(add2NumsMultiplyBy3rd(2, 3, 7)).toBe(multiply(add(2, 3), 7));
       });
     });
-    describe.only("limit", () => {
+    describe("limit", () => {
       it("returns a function on first invocation", () => {
         const addUseOnceOnly = limit(add, 1);
         expect(typeof addUseOnceOnly).toBe("function");
@@ -370,7 +370,7 @@ describe("Higher Order Functions", () => {
         expect(gen()).toBe(undefined);
       });
     });
-    describe("fibonacciF", () => {
+    describe.only("fibonacciF", () => {
       it("returns a function", () => {
         const fib = fibonacciF(0, 1);
         expect(typeof fib).toBe("function");

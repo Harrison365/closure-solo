@@ -62,17 +62,37 @@ function composeB(func1, func2) {
   };
 }
 
-function limit() {
-  return function () {};
+function limit(binaryFunc, limit) {
+  let count = 0;
+  return function (a, b) {
+    if (count < limit) {
+      count++;
+      return binaryFunc(a, b);
+    }
+  };
 }
 
-function from() {}
+function from(num) {
+  return function () {
+    return num++;
+  };
+}
 
-function to() {}
+function to(func, num) {
+  let count = 0;
+  return function () {
+    if (count < num) {
+      count++;
+      return func();
+    }
+  };
+}
 
 function fromTo() {}
 
-function element() {}
+function element() {
+  return function () {};
+}
 
 function collect() {}
 
@@ -80,7 +100,37 @@ function filter() {}
 
 function concat() {}
 
-function fibonacciF() {}
+function fibonacciF(a, b) {
+  count = 0;
+  let A = a;
+  let B = b;
+
+  return function fiBInner() {
+    if (count === 0) {
+      count++;
+      return a;
+    }
+    if (count === 1) {
+      count++;
+      return b;
+    }
+    count++;
+    let C = A + B;
+    A = B;
+    B = C;
+    return C;
+  };
+}
+
+let fib = fibonacciF(0, 1);
+console.log(fib());
+console.log(fib());
+console.log(fib());
+console.log(fib());
+console.log(fib());
+console.log(fib());
+console.log(fib());
+console.log(fib());
 
 function genSymF() {}
 
