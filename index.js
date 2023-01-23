@@ -49,6 +49,24 @@ function twice(binary) {
     return binary(num, num);
   };
 }
+function once(alex) {
+  let count2 = 0;
+  let result;
+  return function innerFunc(...arg) {
+    //...arg === any number of args
+    count2++;
+    console.log(count2);
+    if (count2 === 1) {
+      result = alex(...arg);
+    }
+    return result;
+  };
+}
+
+const onceIdentity = once(identity);
+
+console.log(onceIdentity("hello"));
+console.log(onceIdentity("hello"));
 
 function composeU(first, second) {
   return function (arg) {
@@ -104,8 +122,8 @@ function fibonacciF(a, b) {
   count = 0;
   let A = a;
   let B = b;
-
-  return function fiBInner() {
+  //^^^These are variables that will remain for every invokation of the returned function BUT WON'T RESET. So when count is increased or A or B changed, those changes will stick around for the next invokation of the return function (i.e. the count is useful and not just reset every time).
+  return function fibInner() {
     if (count === 0) {
       count++;
       return a;
@@ -122,15 +140,15 @@ function fibonacciF(a, b) {
   };
 }
 
-let fib = fibonacciF(0, 1);
-console.log(fib());
-console.log(fib());
-console.log(fib());
-console.log(fib());
-console.log(fib());
-console.log(fib());
-console.log(fib());
-console.log(fib());
+// let fib = fibonacciF(0, 1);
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
+// console.log(fib());
 
 function genSymF() {}
 
