@@ -24,6 +24,7 @@ const {
   genSymFF,
   counter,
   revokable,
+  once,
 } = require("../index.js");
 
 describe("Higher Order Functions", () => {
@@ -124,11 +125,20 @@ describe("Higher Order Functions", () => {
     });
   });
 
-  //  describe('once', () => {
-  //    it('Add your first test here...', () => {
-  //      // Write your own tests for once
-  //    })
-  //  })
+  describe("Special task once", () => {
+    it("should return a function", () => {
+      expect(typeof once(add)).toBe("function");
+    });
+    it("the first invocation of the return function gives the expected output", () => {
+      const apple = once(add);
+      expect(apple(1, 2)).toBe(3);
+    });
+    it("should return only one output", () => {
+      const pear = once(add);
+      expect(pear(1, 2)).toBe(3);
+      expect(pear(1, 3)).toBe(3);
+    });
+  });
 
   describe("Unary Functions", () => {
     describe("twice", () => {
@@ -370,7 +380,7 @@ describe("Higher Order Functions", () => {
         expect(gen()).toBe(undefined);
       });
     });
-    describe.only("fibonacciF", () => {
+    describe("fibonacciF", () => {
       it("returns a function", () => {
         const fib = fibonacciF(0, 1);
         expect(typeof fib).toBe("function");

@@ -52,19 +52,21 @@ function twice(binary) {
 
 function once(alex) {
   let count = 0;
-  return function innerFunc(...arg) {
+  let result;
+  return function (...arg) {
     count++;
     if (count === 1) {
-      return alex(...arg);
+      result = alex(...arg);
     }
+    return result;
   };
 }
 
 const onceIdentity = once(identity);
 
 console.log(onceIdentity("hello"));
-console.log(onceIdentity("hello"));
-console.log(onceIdentity("hello"));
+console.log(onceIdentity("llo"));
+console.log(onceIdentity("jell"));
 
 function composeU(first, second) {
   return function (arg) {
@@ -189,4 +191,6 @@ module.exports = {
   genSymFF,
   counter,
   revokable,
+
+  once,
 };
