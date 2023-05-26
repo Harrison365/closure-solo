@@ -49,22 +49,20 @@ function twice(binary) {
     return binary(num, num);
   };
 }
+
 function once(alex) {
-  let count2 = 0;
-  let result;
+  let count = 0;
   return function innerFunc(...arg) {
-    //...arg === any number of args
-    count2++;
-    console.log(count2);
-    if (count2 === 1) {
-      result = alex(...arg);
+    count++;
+    if (count === 1) {
+      return alex(...arg);
     }
-    return result;
   };
 }
 
 const onceIdentity = once(identity);
 
+console.log(onceIdentity("hello"));
 console.log(onceIdentity("hello"));
 console.log(onceIdentity("hello"));
 
@@ -114,7 +112,14 @@ function element() {
 
 function collect() {}
 
-function filter() {}
+function filter(func1, func2) {
+  return () => {
+    const funcCall = func1();
+    if (func2(funcCall)) {
+      return funcCall;
+    }
+  };
+}
 
 function concat() {}
 
