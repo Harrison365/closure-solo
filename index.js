@@ -91,17 +91,20 @@ function limit(binaryFunc, limit) {
 }
 
 function from(num) {
+  num = num - 1;
   return function () {
-    return num++;
+    num++;
+    return num;
   };
 }
+//could also remove num=num and num ++ and instead just return num++ as the ++ occurs after the return.
 
 function to(func, num) {
-  let count = 0;
+  let count = func() - 1;
   return function () {
+    count++;
     if (count < num) {
-      count++;
-      return func();
+      return count;
     }
   };
 }

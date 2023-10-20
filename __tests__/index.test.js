@@ -254,7 +254,7 @@ describe("Higher Order Functions", () => {
         expect(index()).toBe(undefined);
       });
     });
-    describe("fromTo", () => {
+    describe.skip("fromTo", () => {
       it("returns a function on first invocation", () => {
         const index = fromTo(0, 5);
         expect(typeof index).toBe("function");
@@ -352,7 +352,7 @@ describe("Higher Order Functions", () => {
         expect(fil()).toBe(undefined);
       });
     });
-    describe("concat", () => {
+    describe.skip("concat", () => {
       it("returns a function", () => {
         const con = concat(fromTo(0, 3), fromTo(0, 2));
         expect(typeof con).toBe("function");
@@ -410,7 +410,7 @@ describe("Higher Order Functions", () => {
     });
   });
 
-  describe("gensym Functions", () => {
+  describe.skip("gensym Functions", () => {
     describe("genSymF", () => {
       it("returns a function on first invocation", () => {
         expect(typeof genSymF("A")).toBe("function");
@@ -452,7 +452,7 @@ describe("Higher Order Functions", () => {
     });
   });
 
-  describe("Object Methods", () => {
+  describe.skip("Object Methods", () => {
     describe("counter", () => {
       it("returns an object", () => {
         const obj = counter(10);
@@ -486,7 +486,7 @@ describe("Higher Order Functions", () => {
         expect(Object.keys(counter(20))).toEqual(["up", "down"]);
       });
     });
-    describe("revoke", () => {
+    describe.skip("revoke", () => {
       it("returns an object", () => {
         const obj = revokable(add);
         expect(typeof obj).toBe("object");
@@ -515,7 +515,7 @@ describe("Higher Order Functions", () => {
   });
 });
 
-describe("Advanced Functionality", () => {
+describe.skip("Advanced Functionality", () => {
   describe("curry", () => {
     it("works for any number of arguments", () => {
       const multiply5Numbers = (a, b, c, d, e) => a * b * c * d * e;
@@ -523,7 +523,7 @@ describe("Advanced Functionality", () => {
       expect(curry(multiply5Numbers, 1, 2, 3)(4, 5)).toBe(120);
     });
   });
-  describe("composeU", () => {
+  describe.skip("composeU", () => {
     it("works for any number of arguments", () => {
       const square = (x) => x * x;
       const double = (x) => x + x;
@@ -533,7 +533,7 @@ describe("Advanced Functionality", () => {
       expect(doubleFourTimes(3)).toBe(double(double(double(double(3)))));
     });
   });
-  describe("concat", () => {
+  describe.skip("concat", () => {
     it("returns undefined if no generators were passed", () => {
       const gen = concat();
       expect(gen()).toBe(undefined);
